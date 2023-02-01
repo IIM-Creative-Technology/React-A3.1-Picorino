@@ -7,6 +7,8 @@ class CategorieFilter extends React.Component {
     this.state = {
       films: [],
       genre: Number,
+      pageResult: 0,
+      currentPage: 1
     };
     this.genrelist = [
       {
@@ -88,20 +90,45 @@ class CategorieFilter extends React.Component {
   }
 
   componentDidMount() {
+    this.fetchData(this.state.currentPage);
+  }
+
+  fetchData = (page) => {
     fetch(
-      'https://api.themoviedb.org/3/discover/movie?api_key=1bcabc0fa329a6f21493ce8ca670f65a&with_genres=' + this.state.genre
+      'https://api.themoviedb.org/3/discover/movie?api_key=1bcabc0fa329a6f21493ce8ca670f65a&with_genres=' + this.state.genre + '&page=' + page
     )
       .then((response) => response.json())
       .then((filmsList) => {
-        this.setState({ films: filmsList["results"] });
+        this.setState({ 
+          films: filmsList["results"],
+          pageResult: filmsList["total_pages"]
+        });
       });
-  }
+}
 
   updateGenre(new_genre) {
     this.setState({
       genre: new_genre
     });
     this.componentDidMount()
+  }
+
+  handlePrevious = () => {
+    if(this.state.currentPage > 1){
+      this.setState({ 
+        currentPage: this.state.currentPage - 1
+      });
+      this.fetchData(this.state.currentPage - 1)
+    }
+  }
+
+  handleNext = () => {
+    if(this.state.currentPage < this.state.pageResult){
+      this.setState({ 
+        currentPage: this.state.currentPage + 1
+      });
+      this.fetchData(this.state.currentPage + 1)
+    }
   }
 
   render() {
@@ -120,7 +147,7 @@ class CategorieFilter extends React.Component {
                   <img className="locandina" src={"https://image.tmdb.org/t/p/original/" + film.poster_path } alt="poster" />
                   <h1>{ film.title }</h1>
                   <h4>{ film.release_date }</h4>
-                  <p className="type">Action, Crime, Fantasy</p>
+                  <p className="type">{ film.genres }</p>
                 </div>
                 <div className="movie_desc">
                   <p className="text">{ film.overview.substring(0, 200) + '...' }</p>
@@ -129,6 +156,11 @@ class CategorieFilter extends React.Component {
               <div className="blur_back back" style={{ background: `url(https://image.tmdb.org/t/p/original/` + film.poster_path + `)`}}></div>
             </div>
           ))}
+        </div>
+        <div className="pagination">
+          <button onClick={ this.handlePrevious } >Previous</button>
+          <p>{ this.state.currentPage }</p>
+          <button onClick={ this.handleNext }>Next</button>
         </div>
       </div>
     );
