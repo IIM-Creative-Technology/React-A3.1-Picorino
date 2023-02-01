@@ -1,0 +1,38 @@
+.film_list{
+    margin: 5%;
+}
+
+.grid_two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 5%;
+}
+
+/* Pagination */
+
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+
+.pagination p, .pagination button{
+    padding: 1% 2%;
+}
+
+.pagination button{
+    border-radius: 10px;
+    background-color: #e5e6e6 50%;
+    cursor: pointer;
+}
+
+.pagination p{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .grid_two{
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -1,18 +1,18 @@
 import React from 'react';
 import './App.css';
-import FilmList from './components/FilmList/FilmList';
+import Home from './views/Home';
+import { Route, Routes } from 'react-router-dom';
 
 class App extends React.Component {
-
   render(){
     return (
       <div className="App">
-          <h1>Liste films</h1>
-          <FilmList />
+          <Routes>
+            <Route path='/' element={<Home/>} />
+          </Routes>
       </div>
     );
   }
-
 }
 
 export default App;
