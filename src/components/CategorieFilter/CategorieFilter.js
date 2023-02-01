@@ -106,27 +106,27 @@ class CategorieFilter extends React.Component {
 
   render() {
     return (
-      <div class="container">
-        <div>
+      <div className="container">
+        <div className="filter_global">
           {this.genrelist.map((genre) => (
-            <button onClick={() => this.updateGenre(genre.id)} key={genre.id}>{genre.name}</button>
+            <button className="filter" onClick={() => this.updateGenre(genre.id)} key={genre.id}>{genre.name}</button>
           ))}
         </div>
         <div className="grid_two film_list">
           {this.state.films.map((film) => (
-            <div class="movie_card" key={film.id}>
-              <div class="info_section">
-                <div class="movie_header">
-                  <img class="locandina" src={"https://image.tmdb.org/t/p/original/" + film.poster_path } alt="poster" />
+            <div className="movie_card" key={film.id}>
+              <div className="info_section">
+                <div className="movie_header">
+                  <img className="locandina" src={"https://image.tmdb.org/t/p/original/" + film.poster_path } alt="poster" />
                   <h1>{ film.title }</h1>
                   <h4>{ film.release_date }</h4>
-                  <p class="type">Action, Crime, Fantasy</p>
+                  <p className="type">Action, Crime, Fantasy</p>
                 </div>
-                <div class="movie_desc">
-                  <p class="text">{ film.overview.substring(0, 200) + '...' }</p>
+                <div className="movie_desc">
+                  <p className="text">{ film.overview.substring(0, 200) + '...' }</p>
                 </div>
               </div>
-              <div class="blur_back back" style={{ background: `url(https://image.tmdb.org/t/p/original/` + film.poster_path + `)`}}></div>
+              <div className="blur_back back" style={{ background: `url(https://image.tmdb.org/t/p/original/` + film.poster_path + `)`}}></div>
             </div>
           ))}
         </div>
