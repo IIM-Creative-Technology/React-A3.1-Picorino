@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Card from "../components/Card/FilmCard";
 import './Home.css';
 
-
 function Home(){
     
     const [films, setFilms] = useState([]);
