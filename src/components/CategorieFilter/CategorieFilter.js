@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import './CategorieFilter.css';
 
-function CategorieFilter() {
-
-  const [films, setFilms] = useState([]);
-  const [genre, setGenre] = useState(null);
-  const [pageResult, setPageResult] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const genrelist = [
+class CategorieFilter extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      films: [],
+      genre: Number,
+      pageResult: 0,
+      currentPage: 1
+    };
+    this.genrelist = [
       {
         "id": 28,
         "name": "Action"
@@ -84,76 +86,85 @@ function CategorieFilter() {
       {
         "id": 37,
         "name": "Western"
-      }
-  ]
+      }]
+  }
 
-  useEffect(() => {
-    fetchData(currentPage);
-  })
+  componentDidMount() {
+    this.fetchData(this.state.currentPage);
+  }
 
-  function fetchData(page) {
+  fetchData = (page) => {
     fetch(
-      'https://api.themoviedb.org/3/discover/movie?api_key=1bcabc0fa329a6f21493ce8ca670f65a&with_genres=' + genre + '&page=' + page
+      'https://api.themoviedb.org/3/discover/movie?api_key=1bcabc0fa329a6f21493ce8ca670f65a&with_genres=' + this.state.genre + '&page=' + page
     )
       .then((response) => response.json())
       .then((filmsList) => {
-        setFilms(filmsList["results"]);
-        setPageResult(filmsList["total_pages"]);
+        this.setState({ 
+          films: filmsList["results"],
+          pageResult: filmsList["total_pages"]
+        });
       });
+}
+
+  updateGenre(new_genre) {
+    this.setState({
+      genre: new_genre
+    });
+    this.componentDidMount()
   }
 
-  function updateGenre(new_genre) {
-    setGenre(new_genre)
-    fetchData()
-  }
-
-  function handlePrevious() {
-    if(currentPage > 1){
-      setCurrentPage(currentPage - 1)
-      fetchData(currentPage - 1)
+  handlePrevious = () => {
+    if(this.state.currentPage > 1){
+      this.setState({ 
+        currentPage: this.state.currentPage - 1
+      });
+      this.fetchData(this.state.currentPage - 1)
     }
   }
 
-  function handleNext() {
-    if(currentPage < pageResult){
-      setCurrentPage(currentPage + 1)
-      fetchData(currentPage + 1)
-
+  handleNext = () => {
+    if(this.state.currentPage < this.state.pageResult){
+      this.setState({ 
+        currentPage: this.state.currentPage + 1
+      });
+      this.fetchData(this.state.currentPage + 1)
     }
   }
 
-  return (
-    <div className="container">
-      <div className="filter_global">
-        {genrelist.map((genre) => (
-          <button className="filter" onClick={ () => updateGenre(genre.id) } key={genre.id}>{genre.name}</button>
-        ))}
-      </div>
-      <div className="grid_two film_list">
-        {films.map((film) => (
-          <div className="movie_card" key={film.id}>
-            <div className="info_section">
-              <div className="movie_header">
-                <img className="locandina" src={"https://image.tmdb.org/t/p/original/" + film.poster_path } alt="poster" />
-                <h1>{ film.title }</h1>
-                <h4>{ film.release_date }</h4>
-                <p className="type">{ film.genres }</p>
+  render() {
+    return (
+      <div className="container">
+        <div className="filter_global">
+          {this.genrelist.map((genre) => (
+            <button className="filter" onClick={() => this.updateGenre(genre.id)} key={genre.id}>{genre.name}</button>
+          ))}
+        </div>
+        <div className="grid_two film_list">
+          {this.state.films.map((film) => (
+            <div className="movie_card" key={film.id}>
+              <div className="info_section">
+                <div className="movie_header">
+                  <img className="locandina" src={"https://image.tmdb.org/t/p/original/" + film.poster_path } alt="poster" />
+                  <h1>{ film.title }</h1>
+                  <h4>{ film.release_date }</h4>
+                  <p className="type">{ film.genres }</p>
+                </div>
+                <div className="movie_desc">
+                  <p className="text">{ film.overview.substring(0, 200) + '...' }</p>
+                </div>
               </div>
-              <div className="movie_desc">
-                <p className="text">{ film.overview.substring(0, 200) + '...' }</p>
-              </div>
+              <div className="blur_back back" style={{ background: `url(https://image.tmdb.org/t/p/original/` + film.poster_path + `)`}}></div>
             </div>
-            <div className="blur_back back" style={{ background: `url(https://image.tmdb.org/t/p/original/` + film.poster_path + `)`}}></div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div className="pagination">
+          <button onClick={ this.handlePrevious } >Previous</button>
+          <p>{ this.state.currentPage }</p>
+          <button onClick={ this.handleNext }>Next</button>
+        </div>
       </div>
-      <div className="pagination">
-        <button onClick={ handlePrevious } >Previous</button>
-        <p>{ currentPage }</p>
-        <button onClick={ handleNext }>Next</button>
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default CategorieFilter;
