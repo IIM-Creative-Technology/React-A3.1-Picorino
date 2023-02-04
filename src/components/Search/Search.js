@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Search.css';
+
 
 const API_KEY = '1bcabc0fa329a6f21493ce8ca670f65a';
 
@@ -15,18 +17,22 @@ const Search = () => {
 
   return (
     <div>
-      <form onSubmit={searchMovies}>
-        <input
-          type="text"
-          placeholder="Rechercher un film"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button type="submit">Rechercher</button>
-      </form>
+      <div className='search'>
+        <form onSubmit={searchMovies}>
+          <div className='search-barre'>
+            <input
+              type="text"
+              placeholder="Rechercher un film"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <button type="submit">Recherche</button>
+          </div>
+        </form>
+      </div>
       <ul>
-        {results.map((result) => (
-          <div className="grid_two film_list">
+        <div className="grid_two film_list">
+          {results.map((result) => (
             <div class="movie_card" key={result.id}>
               <div class="info_section">
                 <div class="movie_header">
@@ -39,9 +45,9 @@ const Search = () => {
                 </div>
               </div>
               <div class="blur_back back" style={{ background: `url(https://image.tmdb.org/t/p/original/` + result.poster_path + `)`}}></div>
-          </div>
-          </div>
+            </div>
         ))}
+        </div>
       </ul>
     </div>
   );
