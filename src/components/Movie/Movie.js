@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import '../Card/Card.css'
+import './Movie.css';
+
+
 
 const Movie = (props) => {
   const [movie, setMovie] = useState(null);
   const [credits, setCredits] = useState(null);
+  const movieId = props.match.params.id;
 
   useEffect(() => {
     const fetchData = async () => {
-      const movieResponse = await fetch(`https://api.themoviedb.org/3/movie/550?api_key=cb7d0d8ed40c06a214b50e559c819c76`);
+      const movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=cb7d0d8ed40c06a214b50e559c819c76`);
       const movieData = await movieResponse.json();
       setMovie(movieData);
 
-      const creditsResponse = await fetch(`https://api.themoviedb.org/3/movie/550/credits?api_key=cb7d0d8ed40c06a214b50e559c819c76`);
+      const creditsResponse = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=cb7d0d8ed40c06a214b50e559c819c76`);
       const creditsData = await creditsResponse.json();
       setCredits(creditsData);
     };
     fetchData();
-  }, [props.movieId]);
+  }, [movieId]);
 
   return (
     <div>
