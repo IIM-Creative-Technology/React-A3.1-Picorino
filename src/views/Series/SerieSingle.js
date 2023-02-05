@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Seasons from "../../components/Seasons/Seasons";
 import { useParams } from "react-router-dom";
+import './SerieSingle.css';
 
 function SerieSingle(){
     const slug = useParams();
@@ -16,8 +17,8 @@ function SerieSingle(){
     function showSeason(){
         if(serie.seasons !== undefined){
             return serie.seasons.map((season) => (
-                <div>
-                    <p>{ season.name }</p>
+                <div className="seasons">
+                    <h2>{ season.name }</h2>
                     <ul>
                         <Seasons id={slug.id} season_number={season.season_number} />
                     </ul>
@@ -28,7 +29,21 @@ function SerieSingle(){
 
     return(
         <div>
-            <h1>{ serie.name }</h1>
+            <div className="serieSingle">
+                <div>
+                    <img src={"https://image.tmdb.org/t/p/original/" + serie.poster_path } alt={ serie.name } className="poster" />
+                </div>
+                <div>
+                    <h1>{ serie.name }</h1>
+                    <p className="info">{ serie.overview }</p>
+                    <div>
+                        <p className="info"><span>Number of episodes :</span> { serie.number_of_episodes } </p>
+                        <p className="info"><span>Number of seasons :</span> { serie.number_of_seasons }</p>
+                    </div>
+                    <p className="info"><span>Status of the serie :</span> { serie.status }</p>
+                    { console.log(serie) }
+                </div>
+            </div>
             <div>
                 { showSeason() }
             </div>
