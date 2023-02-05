@@ -64,7 +64,6 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Contributors 
-
-@TekRodz, @Alexis-Bally, @lnourry75, @Mitsuya77
+[@TekRodz](https://github.com/TekRodz), [@Alexis-Bally](https://github.com/Alexis-Bally), [@lnourry75](https://github.com/lnourry75), [@Mitsuya77](https://github.com/Mitsuya77)
 
 
