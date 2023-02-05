@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './Movie.css';
 import { useParams } from 'react-router-dom';
-
-
+import './Movie.css';
 
 const Movie = (props) => {
   const [movie, setMovie] = useState(null);
@@ -11,11 +9,11 @@ const Movie = (props) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const movieResponse = await fetch(`https://api.themoviedb.org/3/movie/${slug.id}?api_key=cb7d0d8ed40c06a214b50e559c819c76`);
+      const movieResponse = await fetch(`https://api.themoviedb.org/3/movie/`+ slug.id + `?api_key=cb7d0d8ed40c06a214b50e559c819c76`);
       const movieData = await movieResponse.json();
       setMovie(movieData);
 
-      const creditsResponse = await fetch(`https://api.themoviedb.org/3/movie/${slug.id}/credits?api_key=cb7d0d8ed40c06a214b50e559c819c76`);
+      const creditsResponse = await fetch(`https://api.themoviedb.org/3/movie/`+ slug.id + `/credits?api_key=cb7d0d8ed40c06a214b50e559c819c76`);
       const creditsData = await creditsResponse.json();
       setCredits(creditsData);
     };

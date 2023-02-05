@@ -17,7 +17,7 @@ function App(){
           <Route path='/search' element={<Search/>} />
           <Route path='/filter' element={<CategorieFilter/>} />
           <Route path='/serie/:id' element={<SerieSingle />} />
-          <Route exact path="/movies/:id" element={<Movie />} />
+          <Route path="/movie/:id" element={<Movie />} />
         </Routes>
     </div>
   );
