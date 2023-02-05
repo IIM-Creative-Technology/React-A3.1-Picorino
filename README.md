@@ -1,6 +1,24 @@
 # Projet Etudiant React
 Notre projet est d'utiliser l'API TMDB afin d'afficher les differentes informations. 
 
+# Les fonctionnalités
+
+### `Home page`
+ - Affichage des films 
+ - Filtre par genre 
+ - Accéder au film pour voir plus d'informations
+
+### `Recherche`
+ - Possibilité de recherche un film en particulier
+
+### `Series`
+ - Affichage des différentes séries 
+ - Nombre de saison et épisodes
+ - Savoir si la série est terminée ou pas
+
+# Documentation API TMDB 
+[Documentation TMDB](https://developers.themoviedb.org/3/getting-started/introduction)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
