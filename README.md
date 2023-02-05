@@ -3,15 +3,15 @@ Notre projet est d'utiliser l'API TMDB afin d'afficher les differentes informati
 
 ## Les fonctionnalités
 
-### `Home page`
+### `Home page : /`
  - Affichage des films 
  - Filtre par genre 
  - Accéder au film pour voir plus d'informations
 
-### `Recherche`
+### `Recherche : /search`
  - Possibilité de recherche d'un film en particulier
 
-### `Series`
+### `Series : /series`
  - Affichage des différentes séries 
  - Nombre de saison et épisodes
  - Savoir si la série est terminée ou pas
