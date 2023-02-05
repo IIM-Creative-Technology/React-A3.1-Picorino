@@ -25,8 +25,8 @@ const Movie = (props) => {
        {movie && credits ? (
         <div>
            <div className="movie_card_info" key={movie.id}>
-           <h2 >{movie.title}</h2>
-          <img className='locandina' src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+           <h1 >{movie.title}</h1>
+          <img className='movie_card_info_image' src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
          
           <p >{movie.overview}</p>
           <p>Action, Crime, Fantasy</p>
@@ -36,7 +36,7 @@ const Movie = (props) => {
           <p >Vote average : {movie.vote_average} / 10</p>
           <h3>Casting</h3>
           <ul>
-            {credits.cast.map((castMember, index) => (
+            {credits.cast.slice(0, 15).map((castMember, index) => (
               <li key={index}>
                 <img src={`https://image.tmdb.org/t/p/w185/${castMember.profile_path}`} alt={castMember.name} />
                 {castMember.name}
