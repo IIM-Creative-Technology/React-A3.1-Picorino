@@ -23,7 +23,7 @@ function FilmList(props){
     <div className="movie_card" key={props.film.id}>
       <div className="info_section">
         <div className="movie_header">
-        <Link to={`/movies/${props.film.id}`} key={props.film.id}>
+        <Link to={`/movie/${props.film.id}`}>
           <img className="locandina" src={"https://image.tmdb.org/t/p/original/" + props.film.poster_path } alt={ props.film.title } />
           <h1>{ props.film.title }</h1>
           <h4>{ props.film.release_date }</h4>
