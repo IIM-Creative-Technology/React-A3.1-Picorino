@@ -41,7 +41,6 @@ function SerieSingle(){
                         <p className="info"><span>Number of seasons :</span> { serie.number_of_seasons }</p>
                     </div>
                     <p className="info"><span>Status of the serie :</span> { serie.status }</p>
-                    { console.log(serie) }
                 </div>
             </div>
             <div>
