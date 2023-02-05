@@ -1,3 +1,26 @@
+.filter_global {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter {
+    padding: 5px 8px;
+    text-decoration: none; 
+    font-size: 14px;
+    color: black;
+    background-color: white;
+    border-radius: 7px;
+    border: 2px solid rgb(82,159,195);
+}
+
+.filter:hover {
+    background-color: rgb(82,159,195);
+    color: white;
+    scale: 110%;
+}
+
 .film_list{
     margin: 5%;
 }
