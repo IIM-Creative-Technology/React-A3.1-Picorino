@@ -1,7 +1,7 @@
 # Projet Etudiant React
 Notre projet est d'utiliser l'API TMDB afin d'afficher les differentes informations. 
 
-# Les fonctionnalités
+## Les fonctionnalités
 
 ### `Home page`
  - Affichage des films 
@@ -62,4 +62,9 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Contributors 
+
+@TekRodz, @Alexis-Bally, @lnourry75, @Mitsuya77
+
 
