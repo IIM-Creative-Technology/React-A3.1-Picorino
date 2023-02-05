@@ -19,9 +19,6 @@ Notre projet est d'utiliser l'API TMDB afin d'afficher les differentes informati
 # Documentation API TMDB 
 [Documentation TMDB](https://developers.themoviedb.org/3/getting-started/introduction)
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
