@@ -9,7 +9,7 @@ Notre projet est d'utiliser l'API TMDB afin d'afficher les differentes informati
  - Accéder au film pour voir plus d'informations
 
 ### `Recherche`
- - Possibilité de recherche un film en particulier
+ - Possibilité de recherche d'un film en particulier
 
 ### `Series`
  - Affichage des différentes séries 
