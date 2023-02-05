@@ -1,6 +1,6 @@
 # Projet Etudiant React
 Notre projet est d'utiliser l'API TMDB afin d'afficher les differentes informations. 
-[lien du projet dépolyer sur vercel](https://react-a3-1-picorino.vercel.app/)
+[Lien du projet dépolyer sur vercel](https://react-a3-1-picorino.vercel.app/)
 
 ## Les fonctionnalités
 
