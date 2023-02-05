@@ -3,6 +3,7 @@ import Card from "../components/Card/FilmCard";
 import Filter from "../components/CategorieFilter/CategorieFilter";
 import './Home.css';
 
+
 function Home() {
   const [films, setFilms] = useState([]);
   const [genre, setGenre] = useState(null);

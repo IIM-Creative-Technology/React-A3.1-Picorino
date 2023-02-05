@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import './Card.css';
+import { Link } from 'react-router-dom';
 
 function FilmList(props){
   const [genreList, setGenreList] = useState([])
@@ -22,9 +23,11 @@ function FilmList(props){
     <div className="movie_card" key={props.film.id}>
       <div className="info_section">
         <div className="movie_header">
+        <Link to={`/movie/${props.film.id}`}>
           <img className="locandina" src={"https://image.tmdb.org/t/p/original/" + props.film.poster_path } alt={ props.film.title } />
           <h1>{ props.film.title }</h1>
           <h4>{ props.film.release_date }</h4>
+          </Link>
           <p className="type">{ props.film.genre_ids.map((genre_id) => (
             genreList.map((genre) => (
               <p> { showGenre(genre, genre_id) } </p>

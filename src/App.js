@@ -5,6 +5,7 @@ import CategorieFilter from './components/CategorieFilter/CategorieFilter';
 import { Route, Routes } from 'react-router-dom';
 import Search from './components/Search/Search';
 import SerieSingle from './views/Series/SerieSingle';
+import Movie from './components/Movie/Movie'
 
 
 function App(){
@@ -15,6 +16,7 @@ function App(){
           <Route path='/search' element={<Search/>} />
           <Route path='/filter' element={<CategorieFilter/>} />
           <Route path='/serie/:id' element={<SerieSingle />} />
+          <Route path='/movie/:id' element={<Movie />} />
         </Routes>
     </div>
   );
