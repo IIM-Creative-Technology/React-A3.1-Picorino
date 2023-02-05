@@ -1,3 +1,6 @@
+# Projet Etudiant React
+Notre projet est d'utiliser l'API TMDB afin d'afficher les differentes informations. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
